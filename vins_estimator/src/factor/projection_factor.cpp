@@ -47,7 +47,7 @@ bool ProjectionFactor::Evaluate(double const *const *parameters, double *residua
     residual =  tangent_base * (pts_camera_j.normalized() - pts_j.normalized());
 #else
     double dep_j = pts_camera_j.z();    // 第j帧相机系下深度
-    residual = (pts_camera_j / dep_j).head<2>() - pts_j.head<2>();  // 重投影误差
+    residual = (pts_camera_j / dep_j).head<2>() - pts_j.head<2>();  // 重投影误差 // 归一化相机坐标系的前2维
 #endif
 
     residual = sqrt_info * residual;    // 误差乘上信息矩阵
